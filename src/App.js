@@ -17,7 +17,6 @@ import Information from './components/Information/Information';
 import AddService from './components/AddService/AddService';
 import ManageServices from './components/ManageServices/ManageServices';
 import Bikes from './components/Home/Bikes/Bikes';
-import Dashboard from './components/Dashboard/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -41,9 +40,6 @@ function App() {
           <Route path="/services">
             <Services></Services>
           </Route>
-          {/* <Route path="/about">
-            <About></About>
-          </Route> */}
           <Route path="/contact">
             <Contact></Contact>
           </Route>
@@ -55,9 +51,6 @@ function App() {
           </PrivateRoute>
           <PrivateRoute path="/about">
             <About></About>
-          </PrivateRoute>
-          <PrivateRoute path="/dashboard">
-            <Dashboard></Dashboard>
           </PrivateRoute>
           <PrivateRoute path="/addService">
             <AddService></AddService>

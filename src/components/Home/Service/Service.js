@@ -14,9 +14,9 @@ const Service = ({service}) => {
                 <Card.Img variant="top" src={img} />
                 <Card.Body>
                 <Card.Title>Name:{name}</Card.Title>
-                <p>Service Fee:{price}</p>
+                <p>Price:{price}</p>
                 <Card.Text>
-                Description:{description}
+                Details:{description}
                 </Card.Text>
                 </Card.Body>
                 <Card.Footer>

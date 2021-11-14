@@ -5,9 +5,9 @@ import './Services.css';
 const Services = () => {
     const[services, setServices] = useState([])
     useEffect(()=> {
-        fetch('http://localhost:5000//services')
+        fetch('https://infinite-wildwood-81897.herokuapp.com/services')
         .then(res => res.json())
-        .then(data => setServices(data));
+        .then(data => setServices(data.slice(0,6)));
         
     },[])
     
