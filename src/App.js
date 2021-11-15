@@ -8,20 +8,32 @@ import Home from './components/Home/Home';
 import About from './components/About/About';
 import Contact from './components/Contact/Contact';
 import Login from './components/Login/Login';
+import PrivateRoute from "./components/Login/PrivateRoute/PrivateRoute";
 import Register from './components/Register/Register';
 import Footer from './components/Footer/Footer';
 import Services from './components/Home/Services/Services';
 import Errorfile from './components/Errorfile/Errorfile';
-import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Information from './components/Information/Information';
 import AddService from './components/AddService/AddService';
 import ManageServices from './components/ManageServices/ManageServices';
 import Bikes from './components/Home/Bikes/Bikes';
+import { createContext, useState } from 'react';
+import Dashboard from './components/Dashboard/Dashboard/Dashboard';
 
+
+export const UserContext = createContext();
 function App() {
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    photoURl: "",
+    isLoggedIn: false,
+  });
+
   return (
     <div className="App">
       <AuthProvider>
+      <UserContext.Provider value={[user, setUser]}>
         <BrowserRouter>
         <Header></Header>
         <Switch>
@@ -58,12 +70,16 @@ function App() {
           <PrivateRoute path="/manageServices">
             <ManageServices></ManageServices>
           </PrivateRoute>
+          <PrivateRoute path="/dashboard">
+            <Dashboard/>
+          </PrivateRoute>
           <Route exact path="*">
             <Errorfile></Errorfile>
           </Route>
         </Switch>
         <Footer></Footer>
         </BrowserRouter>
+      </UserContext.Provider>
       </AuthProvider>
   
     </div>

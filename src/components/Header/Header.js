@@ -24,13 +24,15 @@ const Header = () => {
       <Nav.Link as={HashLink} to="/addService">Added A New Services</Nav.Link>
       <Nav.Link as={HashLink} to="/manageServices">Manage All Orders</Nav.Link>
       <Nav.Link as={HashLink} to="/about">About</Nav.Link>
+      <Nav.Link as={HashLink} to="/dashboard">DashBoared</Nav.Link>
+      <Nav.Link as={HashLink} to="/dashboard">Admin</Nav.Link>
 
       {
       user?.email ?
       <Box>
-          <NavLink as={Link} to="/dashboard">
+          {/* <NavLink as={Link} to="/dashboard">
             <Button color="inherit">Dashboard</Button>
-            </NavLink> 
+            </NavLink>  */}
            <Button onClick={logout} variant="light">Logout</Button>
       </Box>
        

@@ -7,7 +7,7 @@ const Services = () => {
     useEffect(()=> {
         fetch('https://infinite-wildwood-81897.herokuapp.com/services')
         .then(res => res.json())
-        .then(data => setServices(data.slice(0,6)));
+        .then(data => setServices(data.slice(0,6)))
         
     },[])
     

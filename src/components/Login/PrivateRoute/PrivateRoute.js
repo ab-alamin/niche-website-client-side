@@ -1,34 +1,27 @@
-import React from 'react';
-import { Spinner } from 'react-bootstrap';
-import { Redirect, Route } from 'react-router';
-import useAuth from '../../../hooks/useAuth';
+import React, { useContext } from "react";
+import { Redirect } from "react-router";
+import { UserContext } from "../../../App";
+import { Route } from "react-router-dom";
 
 const PrivateRoute = ({ children, ...rest }) => {
-    const {user, isLoading} = useAuth();
-    if(isLoading) {
-        return <Spinner animation="border" variant="danger" />
-    }
-
-    return (
-        <Route
-        {...rest}
-        render={({location}) => user.email ? (
-         children
-         ) : (
-         <Redirect
-        to={{
-            pathname: "/login",
-            state: { from: location }
-          }}
-         
-        ></Redirect>
-         )
-
-        }
-        >
-            
-        </Route>
-    );
+  const [user, setUser] = useContext(UserContext);
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+        user.email || sessionStorage.getItem("token") ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: location },
+            }}
+          />
+        )
+      }
+    />
+  );
 };
 
 export default PrivateRoute;
